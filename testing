@@ -1,0 +1,59 @@
+import static java.lang.Math.*;
+public class Main {
+    public static void main(String[] args) {
+        // Создать одномерный массив z типа short. Заполнить его чётными числами от 2 до 22 включительно в порядке убывания.
+        int k;
+        k = 22;
+        short[] z = new short[11];
+        for (int i = 0; i < 11; i++) {
+            z[i] = (short) k;
+            k = k - 2;
+        }
+
+
+        /* for (int j = 0; j < 11; j++) {
+            System.out.print(z[j] + " ");
+        } */
+        //Создать одномерный массив x типа double. Заполнить его 13-ю случайными числами в диапазоне от -15.0 до 14.0.
+        double[] x = new double[13];
+        for (int i = 0; i < 13; i++) {
+            x[i] = -15.0 + (random() * (14.0 + 15.0));
+        }
+//        for (double num : x) {
+//            System.out.printf("%.2f ", num);
+//        }
+//        System.out.println();
+        //Создать двумерный массив z размером 11x13. Вычислить его элементы по следующей формуле и вывести
+        double[][] z1 = new double[11][13];
+        for (int i = 0; i < 11; i++) {
+            for (int j = 0; j < 13; j++) {
+                z1[i][j] = z1x(z[i], x[j]);
+            }
+        }
+        tvar(z1);
+    }
+
+    public static double z1x(short zi, double xj){
+        if (zi == 16) {
+            return 0.5 * (0.25 + sin(log(abs(xj))));
+        }
+        if (zi == 4 || zi == 8 || zi == 10 || zi == 14 || zi == 22) {
+            return cos(pow((pow(xj, (2.0 / 3.0) * (2 - xj))) / 2, 2));
+        } else {
+            return sin(sin(tan(sin(xj))));
+        }
+    }
+
+    public static void tvar(double[][] zij){
+        for (int i = 0; i < 11; i++) {
+            for (int j = 0; j < 13; j++) {
+                System.out.printf("%8.2f", zij[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+
+}
+
+
