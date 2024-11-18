@@ -1,13 +1,14 @@
 package mymoves;
 
+import ru.ifmo.se.pokemon.Messages;
 import ru.ifmo.se.pokemon.PhysicalMove;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 
-public class SampleMove extends PhysicalMove {
-    public SampleMove(double pow, double acc) {
+final public class StoneEdge extends PhysicalMove {
+    public StoneEdge(double pow, double acc) {
 
-        super(Type.NORMAL, pow, acc);
+        super(Type.ROCK, pow, acc);
 
     }
 
@@ -17,10 +18,17 @@ public class SampleMove extends PhysicalMove {
     }
 
     @Override
+    protected double calcCriticalHit(Pokemon var1, Pokemon var2) {
+        if (Math.random() < 1/8.0d){
+            System.out.println("Critical hit!");
+            return 2.0;
+        }
+        else { return 1.0; }
+    }
+
+    @Override
     protected String describe() {
         String[] pieces = this.getClass().toString().split("\\.");
         return "does " + pieces[pieces.length-1];
     }
 }
-
-// Effect effect = new Effect().chance().stat(Stat.DEFENSE, -1);

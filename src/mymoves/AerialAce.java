@@ -1,9 +1,10 @@
-package mymoves.Dedenne;
+package mymoves;
 
 import ru.ifmo.se.pokemon.PhysicalMove;
+import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 
-public class AerialAce extends PhysicalMove {
+final public class AerialAce extends PhysicalMove {
     public AerialAce(double pow, double acc) {
 
         super(Type.FLYING, pow, acc);
@@ -13,6 +14,11 @@ public class AerialAce extends PhysicalMove {
     protected String describe() {
         String[] pieces = this.getClass().toString().split("\\.");
         return "does " + pieces[pieces.length-1];
+    }
+
+    @Override
+    protected boolean checkAccuracy(Pokemon att, Pokemon def) {
+        return true; // Всегда возвращает true
     }
 
 }

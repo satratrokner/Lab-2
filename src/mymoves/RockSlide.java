@@ -1,19 +1,23 @@
 package mymoves;
 
+import ru.ifmo.se.pokemon.Effect;
 import ru.ifmo.se.pokemon.PhysicalMove;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 
-public class SampleMove extends PhysicalMove {
-    public SampleMove(double pow, double acc) {
+final public class RockSlide extends PhysicalMove {
+    public RockSlide(double pow, double acc) {
 
-        super(Type.NORMAL, pow, acc);
+        super(Type.ROCK, pow, acc);
 
     }
 
     @Override
     protected void applyOppEffects(Pokemon p){
         super.applyOppEffects(p);
+        if (Math.random() < 0.3) {
+            Effect.flinch(p);
+        }
     }
 
     @Override
@@ -22,5 +26,3 @@ public class SampleMove extends PhysicalMove {
         return "does " + pieces[pieces.length-1];
     }
 }
-
-// Effect effect = new Effect().chance().stat(Stat.DEFENSE, -1);
